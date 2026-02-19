@@ -4,7 +4,12 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "4.59.0"
     }
-
+  }
+  backend "azurerm" {
+    resource_group_name  = "rg_infra"
+    storage_account_name = "storageinfra"
+    container_name       = "contenerinfra"
+    key                  = "nikku.tfstate"
   }
 }
 provider "azurerm" {
