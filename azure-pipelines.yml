@@ -23,7 +23,7 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'init'
-           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           workingDirectory: 'C:\STL_DATA\DevOps_Insider\vsts-agent-win-x64-4.269.0\_work\2\s'
            backendServiceArm: 'ajant ka jhund'
            backendAzureRmResourceGroupName: 'rg_infra'
            backendAzureRmStorageAccountName: 'storageinfra'
@@ -35,7 +35,7 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'plan'
-           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           workingDirectory: 'C:\STL_DATA\DevOps_Insider\vsts-agent-win-x64-4.269.0\_work\2\s'
            environmentServiceNameAzureRM: 'ajant ka jhund'
 
 
@@ -64,7 +64,7 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'init'
-           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           workingDirectory: 'C:\STL_DATA\DevOps_Insider\vsts-agent-win-x64-4.269.0\_work\2\s'
            backendAzureRmResourceGroupName: 'rg_infra'
            backendAzureRmStorageAccountName: 'storageinfra'
            backendAzureRmContainerName: 'contenerinfra'
@@ -74,7 +74,7 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'apply'
-           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           workingDirectory: 'C:\STL_DATA\DevOps_Insider\vsts-agent-win-x64-4.269.0\_work\2\s'
            commandOptions: '-auto-approve'
            environmentServiceNameAzureRM: 'ajant ka jhund'
        
