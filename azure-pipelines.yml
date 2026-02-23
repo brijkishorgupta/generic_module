@@ -41,7 +41,7 @@ stages:
 
  - stage: scaning
    displayName: scaning
-   pool: server
+   pool: ajant-ka-jhund
    jobs:
      - job:
        displayName: tfsec 
