@@ -7,7 +7,10 @@ rgs = {
     rg-name  = "backend-rg1"
     location = "Central india"
   }
- 
+  "rg3" = {
+    rg-name  = "backend-rg2"
+    location = "Central india"
+  }
 }
 stg = {
   "stg1" = {
