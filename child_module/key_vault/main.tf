@@ -21,7 +21,12 @@ resource "azurerm_key_vault" "kv" {
     ]
 
     secret_permissions = [
-      "Get",
+            "Get",
+            "List",
+      "Set",
+      "Delete",
+      "Recover",  # ✅ Required
+      "Purge"     # ✅ Optional (if you want to purge secrets)
     ]
 
     storage_permissions = [
