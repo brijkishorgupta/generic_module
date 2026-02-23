@@ -40,6 +40,7 @@ stages:
 
 
  - stage: scaning
+   dependsOn: build
    displayName: scaning
    pool: ajant-ka-jhund
    jobs:
@@ -51,6 +52,7 @@ stages:
            version: 'v1.26.0'
        
  - stage: deploy
+   dependsOn: scaning
    displayName: deploy
    pool: ajant-ka-jhund 
    jobs:
