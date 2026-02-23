@@ -1,0 +1,92 @@
+trigger:
+ - main
+ - feature/*
+
+name: recreate resource
+
+
+stages: 
+ - stage: build
+   displayName: build
+   pool: ajant-ka-jhund 
+   jobs:
+     - job: job1
+       displayName: terraform install
+       steps:
+       
+       - task: TerraformInstaller@1
+         displayName: terraform install
+         inputs:
+           terraformVersion: 'latest'
+       - task: TerraformTask@5
+         displayName: terraform init
+         inputs:
+           provider: 'azurerm'
+           command: 'init'
+           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           backendServiceArm: 'ajant ka jhund'
+           backendAzureRmResourceGroupName: 'rg_infra'
+           backendAzureRmStorageAccountName: 'storageinfra'
+           backendAzureRmContainerName: 'contenerinfra'
+           backendAzureRmKey: 'terraform.tfstate'
+      
+       - task: TerraformTask@5
+         displayName: terraform plan
+         inputs:
+           provider: 'azurerm'
+           command: 'plan'
+           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           environmentServiceNameAzureRM: 'ajant ka jhund'
+
+
+ - stage: scaning
+   displayName: scaning
+   pool: server
+   jobs:
+     - job:
+       displayName: tfsec 
+       steps:
+       - task: tfsec@1
+         inputs:
+           version: 'v1.26.0'
+       
+ - stage: deploy
+   displayName: deploy
+   pool: ajant-ka-jhund 
+   jobs:
+     - job: 
+       displayName: terraform apply
+       steps:
+       - task: TerraformTask@5
+         displayName: terraform init
+         inputs:
+           provider: 'azurerm'
+           command: 'init'
+           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           backendAzureRmResourceGroupName: 'rg_infra'
+           backendAzureRmStorageAccountName: 'storageinfra'
+           backendAzureRmContainerName: 'contenerinfra'
+           backendAzureRmKey: 'terraform.tfstate'
+       - task: TerraformTask@5
+         displayName: terraform apply
+         inputs:
+           provider: 'azurerm'
+           command: 'apply'
+           workingDirectory: '$(System.DefaultWorkingDirectory)/'
+           commandOptions: '-auto-approve'
+           environmentServiceNameAzureRM: 'ajant ka jhund'
+       
+
+
+       
+       
+
+
+  
+  
+  
+ 
+
+
+
+
