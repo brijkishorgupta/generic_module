@@ -7,7 +7,6 @@ rgs = {
     rg-name  = "backend-rg1"
     location = "Central india"
   }
-
 }
 stg = {
   "stg1" = {
