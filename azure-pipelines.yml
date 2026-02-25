@@ -65,9 +65,9 @@ stages:
            provider: 'azurerm'
            command: 'init'
            workingDirectory: 'C:\STL_DATA\DevOps_Insider\vsts-agent-win-x64-4.269.0\_work\2\s\parent_mpdule'
-           backendAzureRmResourceGroupName: 'rg_infra'
-           backendAzureRmStorageAccountName: 'storageinfra'
-           backendAzureRmContainerName: 'contenerinfra'
+           backendAzureRmResourceGroupName: 'rg_infra1'
+           backendAzureRmStorageAccountName: 'storageinfra12'
+           backendAzureRmContainerName: 'contenerinfra1'
            backendAzureRmKey: 'terraform.tfstate'
        - task: TerraformTask@5
          displayName: terraform apply
